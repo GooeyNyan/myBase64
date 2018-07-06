@@ -129,11 +129,13 @@ public class MyBase64 implements IMyBase64 {
    * @param s The {@code String} to be converted.
    */
   private static byte[] stringToBytes(String s) {
-    ArrayList<Byte> list = new ArrayList<Byte>();
-    for (int i = 0; i < s.length(); i++)
-      list.add((byte) s.charAt(i));
+    // ArrayList<Byte> list = new ArrayList<Byte>();
+    // for (int i = 0; i < s.length(); i++) {
+    // list.add((byte) s.charAt(i));
+    // }
 
-    return byteListToByteArray(list);
+    // return byteListToByteArray(list);
+    return s.getBytes();
   }
 
   /**
@@ -174,6 +176,6 @@ public class MyBase64 implements IMyBase64 {
    * @param len The length of String
    */
   private static String byteToString(byte b, int len) {
-    return String.format("%" + len + "s", Integer.toBinaryString(b)).replace(' ', '0');
+    return String.format("%" + len + "s", Integer.toBinaryString(b & 0xff)).replace(' ', '0');
   }
 }
